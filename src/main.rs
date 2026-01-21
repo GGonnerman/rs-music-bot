@@ -3,7 +3,7 @@
 use std::env;
 
 // dotenv
-use dotenv::dotenv;
+use dotenvy::dotenv;
 
 // serenity and songbird imports
 use serenity::async_trait;
@@ -19,8 +19,8 @@ struct Handler;
 #[async_trait]
 impl EventHandler for Handler {
     async fn message(&self, ctx: Context, msg: Message) {
-        if msg.content == "!ping" {
-            if let Err(why) = msg.channel_id.say(&ctx.http, "Pong!").await {
+        if msg.content == "!pong" {
+            if let Err(why) = msg.channel_id.say(&ctx.http, "!ping").await {
                 println!("Error sending message: {why:?}");
             }
         }
