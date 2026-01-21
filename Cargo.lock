@@ -2468,6 +2468,7 @@ dependencies = [
  "serenity",
  "songbird",
  "tokio",
+ "tracing",
  "yt-dlp",
 ]
 
