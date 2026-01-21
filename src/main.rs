@@ -2,6 +2,9 @@
 // std library imports
 use std::env;
 
+// dotenv
+use dotenv::dotenv;
+
 // serenity and songbird imports
 use serenity::async_trait;
 use serenity::model::channel::Message;
@@ -27,10 +30,12 @@ impl EventHandler for Handler {
 
 #[tokio::main]
 async fn main() {
+    dotenv().ok();
     // Login with a bot token from the environment
     let token = env::var("DISCORD_TOKEN").expect("Expected a token in the environment");
     // Set gateway intents, which decides what events the bot will be notified about
-    let intents = GatewayIntents::GUILD_MESSAGES
+    let intents = 
+    GatewayIntents::GUILD_MESSAGES
         | GatewayIntents::DIRECT_MESSAGES
         | GatewayIntents::MESSAGE_CONTENT;
 
