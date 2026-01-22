@@ -1,6 +1,12 @@
 #![cfg_attr(debug_assertions, allow(dead_code, unused_imports))]
+// self imports
+mod commands;
+
+// Import types from commands module
+use commands::{Data, Error, join, framework_builder};
+
 // std library imports
-use std::env;
+use std::{env, sync::Arc};
 
 // dotenv
 use dotenvy::dotenv;
@@ -10,8 +16,11 @@ use serenity::async_trait;
 use serenity::model::channel::Message;
 use serenity::prelude::*;
 
+use poise::serenity_prelude as serenity;
+
 // tokio related imports
 use tracing::{debug, error, info, span, warn, Level};
+
 
 
 struct Handler;
@@ -39,9 +48,12 @@ async fn main() {
         | GatewayIntents::DIRECT_MESSAGES
         | GatewayIntents::MESSAGE_CONTENT;
 
+
+    let framework = framework_builder().build();
+
     // Create a new instance of the Client, logging in as a bot.
     let mut client =
-        Client::builder(&token, intents).event_handler(Handler).await.expect("Err creating client");
+        Client::builder(&token, intents).framework(framework).event_handler(Handler).await.expect("Err creating client");
 
     // Start listening for events by starting a single shard
     if let Err(why) = client.start().await {
