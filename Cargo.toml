@@ -10,4 +10,5 @@ serenity = "0.12.5"
 songbird = "0.5.0"
 tokio = "1.49.0"
 tracing = "0.1.44"
+
 yt-dlp = "1.4.7"
