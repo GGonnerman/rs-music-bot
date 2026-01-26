@@ -57,8 +57,76 @@ pub fn framework_builder() -> FrameworkBuilder<Data, Error> {
         })
 }
 
-#[poise::command(slash_command, prefix_command, aliases("j", "abomination"))]
+
+// !join, !leave, !play - !p, !queue <depth> - !q <depth>, !nowplaying - !np, !skip <n>, !clear,  !shuffle - !s,  !insert <index1>,
+// !move <index1> <index2>, !history <depth>, !pomodoro, !search <name>, !select <result index> <optional queue position; default=end of list>, !help
+
+
+#[poise::command(slash_command, prefix_command, aliases("_"))]
+pub async fn __(ctx: Context<'_>, arg: String) -> Result<(), Error> {
+    // 
+    // 
+    Ok(())
+}
+
+
+#[poise::command(slash_command, prefix_command, aliases("j"))]
 pub async fn join(ctx: Context<'_>, arg: String) -> Result<(), Error> {
+    // if owner in vc join voice channel of the owner
+    // respond and log that the bot has joined the voice channel
+    Ok(())
+}
+
+
+#[poise::command(slash_command, prefix_command, aliases("l"))]
+pub async fn leave(ctx: Context<'_>, arg: String) -> Result<(), Error> {
+    // if owner in vc leave voice channel of the owner
+    // ?respond? and log that the bot has left the voice channel
+    Ok(())
+}
+
+#[poise::command(slash_command, prefix_command, aliases("p"))]
+pub async fn play(ctx: Context<'_>, arg: String) -> Result<(), Error> {
+    // check the user is in voice channel
+    // determine if valid url
+    // respond and log
+    // initiate download
+    // start playing music
+    Ok(())
+}
+
+#[poise::command(slash_command, prefix_command, aliases("q"))]
+pub async fn queue(ctx: Context<'_>, depth: String) -> Result<(), Error> {
+    // respond and log
+    Ok(())
+}
+
+#[poise::command(slash_command, prefix_command, aliases("np"))]
+pub async fn nowplaying(ctx: Context<'_>) -> Result<(), Error> {
+    // respond and log
+    Ok(())
+}
+
+#[poise::command(slash_command, prefix_command)]
+pub async fn skip(ctx: Context<'_>, n: String) -> Result<(), Error> {
+    // check the user is in voice channel
+    // bounds check
+    // skip n number or songs 
+    Ok(())
+}
+
+#[poise::command(slash_command, prefix_command)]
+pub async fn clear(ctx: Context<'_>) -> Result<(), Error> {
+    // check the user is in voice channel
+    // clear out the queue
+    Ok(())
+}
+
+
+#[poise::command(slash_command, prefix_command)]
+pub async fn shuffle(ctx: Context<'_>) -> Result<(), Error> {
+    // check the user is in voice channel
+    // shuffle the queue
     Ok(())
 }
 
